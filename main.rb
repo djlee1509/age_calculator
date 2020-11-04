@@ -10,7 +10,14 @@ class User
 
   # Returns an Integer representing the user's current age
   def age
+    today_date = Date.today
+    dob = @date_of_birth
+    ages = today_date.year - dob.year
 
+    if (dob.month > today_date.month or (dob.month == today_date.month and dob.day > today_date.day))
+      ages = ages - 1
+    end
+    return ages
   end
 
 
