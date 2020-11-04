@@ -16,8 +16,9 @@ class User
 
     if (dob.month > today_date.month or
       (dob.month == today_date.month and dob.day > today_date.day))
-      ages = ages - 1
+      ages -= 1
     end
+
     return ages
   end
 
@@ -28,10 +29,10 @@ class User
     today_date = Date.today
     year_diff = today_date.year - dob.year
 
-    year = today_date.year + 1
+    year = today_date.year
 
-    if year_diff > age
-      year = today_date.year
+    if year_diff == age
+      year += 1
     end
 
     return Date.new(year, dob.month, dob.day)
