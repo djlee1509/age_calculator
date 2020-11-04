@@ -14,7 +14,8 @@ class User
     dob = @date_of_birth
     ages = today_date.year - dob.year
 
-    if (dob.month > today_date.month or (dob.month == today_date.month and dob.day > today_date.day))
+    if (dob.month > today_date.month or
+      (dob.month == today_date.month and dob.day > today_date.day))
       ages = ages - 1
     end
     return ages
@@ -23,7 +24,17 @@ class User
 
   # Returns a date object for the user's next birthday
   def next_birthday
+    dob = @date_of_birth
+    today_date = Date.today
+    year_diff = today_date.year - dob.year
 
+    year = today_date.year + 1
+
+    if year_diff > age
+      year = today_date.year
+    end
+
+    return Date.new(year, dob.month, dob.day)
   end
 end
 
